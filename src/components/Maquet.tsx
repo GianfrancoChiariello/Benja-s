@@ -6,6 +6,14 @@ import {
     useRouter
 } from 'next/router'
 
+import {
+    AccordionDetails,
+    Typography,
+    AccordionSummary,
+    Accordion
+} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 
 const Maquet = ({children, title} : any) => {
@@ -70,23 +78,61 @@ const Maquet = ({children, title} : any) => {
                         <div style={{
                             display: 'flex',
                             flexDirection: 'column',
-                            paddingTop: '1rem'
+                            paddingTop: '2rem'
                         }}>
-                            {
-                                rutas && rutas.map((item: any) => {
-                                    return (
-                                        <div style={{
-                                            backgroundColor: item.ruta == url ? 'rgba(71, 91, 232, 1)' : 'rgba(0, 0, 0, 0)',
+
+                            <div style={{
+                                            backgroundColor: "/dashboard" == url ? 'rgba(71, 91, 232, 1)' : 'rgba(0, 0, 0, 0)',
                                             borderRadius: '.6rem',
-                                            padding: '.2rem .5rem'
+                                            padding: '.2rem 1rem'
                                         }}>
-                                            <Link href={item.ruta}>
-                                                {item.title}
+                                            <Link href="dashboard">
+                                                Dashboard
                                             </Link>
-                                        </div>
-                                    )
-                                })
-                            }
+                            </div>
+
+                            <Accordion sx={{
+                                backgroundColor: 'transparent',
+                                boxShadow: '0',
+                            }}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon sx={{color: 'white'}} />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                    <Typography sx={{
+                                        fontFamily: 'monospace',
+                                        color: 'white',
+                                        fontSize: '1.2rem',
+                                    }}>Productos</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography className='tp' onClick={() => router.push('productos')}>
+                                                Stock
+                                        </Typography>
+                                    </AccordionDetails>
+                                    <AccordionDetails>
+                                        <Typography className='tp'  onClick={() => router.push('nuevoProducto')}>
+                                                Nuevo
+                                        </Typography>
+                                    </AccordionDetails>
+                                    <AccordionDetails>
+                                        <Typography className='tp'  onClick={() => router.push('actualizarProducto')}>
+                                                Actualizar
+                                        </Typography>
+                                    </AccordionDetails>
+                            </Accordion>
+
+                            <div style={{
+                                            backgroundColor: "ventas" == url ? 'rgba(71, 91, 232, 1)' : 'rgba(0, 0, 0, 0)',
+                                            borderRadius: '.6rem',
+                                            padding: '.2rem 1rem'
+                                        }}>
+                                            <Link href="ventas">
+                                                Ventas
+                                            </Link>
+                            </div>
+
                         </div>
                     </div>
 

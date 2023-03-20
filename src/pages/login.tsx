@@ -32,6 +32,7 @@ const Login = () => {
         <GoogleLogin 
             onSuccess={(data) => {
                 verify(data)
+                console.log(data)
             }}
             onError={() => {
                 console.log("Error al iniciar sesion")

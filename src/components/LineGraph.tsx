@@ -47,7 +47,6 @@ const LineGraph = () => {
             dispatch<any>(res)
         })
     },[])
-
     
 
      const options = {
@@ -64,14 +63,15 @@ const LineGraph = () => {
         },
       };
       
-      const labels = ventas?.map((item: any) => item.fecha.slice(0, 10))
+      
+      const labels = ventas?.slice(ventas > 15 ? ventas.length - 10 : ventas.length - 5).map((item: any) => item.fecha.slice(0, 10))
       
        const data = {
         labels,
         datasets: [
           {
             fill: true,
-            data: ventas.map((item : any) => item.total),
+            data: ventas?.slice(ventas > 15 ? ventas.length - 10 : ventas.length - 5).map((item : any) => item.total),
             borderColor: 'rgb(53, 162, 235)',
             backgroundColor: 'rgba(53, 162, 235, 0.5)',
           },

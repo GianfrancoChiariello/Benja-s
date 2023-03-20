@@ -4,6 +4,7 @@ export interface reducerStates {
     tipos: any;
     ventas: any;
     top5: any;
+    top5pay: any,
 }
 
 const initialState = {
@@ -11,7 +12,8 @@ const initialState = {
     productos: [],
     tipos: [],
     ventas:[],
-    top5: []
+    top5: [],
+    top5pay: []
 };
   
   export const userReducer = (state = initialState, action: any) => {
@@ -47,6 +49,12 @@ const initialState = {
             ...state,
             top5: action.payload
           }
+
+      case 'TOP5PAY':
+        return {
+          ...state,
+          top5pay: action.payload
+        }
 
       
         // Default //

@@ -2,10 +2,16 @@ import Maquet from '../components/Maquet'
 import Cards from '../components/Cards'
 import LineGraph from '../components/LineGraph'
 import BestItems from '../components/BestItems'
+import BestPayments from '../components/BestPayments'
 import TableVentas from '../components/TableVentas'
+import {
+    useState
+} from 'react'
 
 
 const Dashboard = () => {
+
+    const [viewer, setViewer] = useState(true)
 
     return (
         <Maquet title="Dashboard">
@@ -46,13 +52,40 @@ const Dashboard = () => {
                     borderRadius: '.8rem',
                 }}>
 
-                    <h4 style={{
-                        fontFamily: 'monospace',
-                        textAlign: 'center',
-                        fontSize: '1.2rem'
-                    }}>Mas vendidos</h4>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent:'center',
+                        gap: '.5rem'
+                    }}>
+                        <h4 style={{
+                            fontFamily: 'monospace',
+                            textAlign: 'center',
+                            fontSize: '1.1rem',
+                            cursor: 'pointer',
+                            opacity: '.8'
+                        }}
+                        onClick={() => setViewer(true)}
+                        >Mas vendidos</h4>
+                        <span>|</span>
+                        <h4 style={{
+                            fontFamily: 'monospace',
+                            textAlign: 'center',
+                            fontSize: '1.1rem',
+                            cursor: 'pointer',
+                            opacity: '.8'
+                        }}
+                        onClick={() => setViewer(false)}
+                        >Mas usados </h4>
+                    </div>
 
-                    <BestItems/>
+
+                    {
+                        viewer ? (
+                            <BestItems/>
+                        ) : (
+                            <BestPayments/>
+                        )
+                    }
 
                 </div>
 

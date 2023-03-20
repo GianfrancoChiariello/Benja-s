@@ -33,7 +33,7 @@ const TableVentas = () => {
                     </TableRow>
                     </TableHead>
                     <TableBody>
-                    {ventas.map((row : any) => (
+                    {ventas && ventas.slice(ventas.length - 5).reverse().map((row : any) => (
                         <TableRow
                         key={row.nombre}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

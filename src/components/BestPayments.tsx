@@ -5,23 +5,22 @@ import {
 } from 'react-redux'
 import {
     useEffect,
-    useState
 } from 'react'
 import {
-    getTop5
+    getTop5Payments
 } from '../apis/actions'
 
 
 
-const BestItems = () => {
+const BestPayments = () => {
 
     const dispatch = useDispatch()
 
-    const top5 = useSelector((state: any) => state?.top5)
+    const top5pay = useSelector((state: any) => state?.top5pay)
 
     useEffect(() => {
 
-        getTop5().then((res) => {
+        getTop5Payments().then((res) => {
             dispatch<any>(res)
         })
 
@@ -32,7 +31,7 @@ const BestItems = () => {
         <div>
 
             {
-                top5 && top5?.map((item: any) => {
+                top5pay && top5pay?.map((item: any) => {
 
                     return (
                         <div style={{
@@ -58,4 +57,4 @@ const BestItems = () => {
     )
 }
 
-export default BestItems
+export default BestPayments

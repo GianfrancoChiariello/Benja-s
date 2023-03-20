@@ -151,3 +151,28 @@ export const getTop5 = async () => {
     }
 }
 
+export const getTop5Payments = async () => {
+
+    return async function (dispatch: any) {
+
+        try {
+
+            const data = await axios.get('getTop5Payments', {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            return dispatch({
+                type: 'TOP5PAY',
+                payload: data.data
+            })
+            
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+
+}
+
