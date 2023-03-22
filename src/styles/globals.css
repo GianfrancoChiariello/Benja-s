@@ -11,6 +11,10 @@ a {
   font-size: 1.2rem;
 }
 
+.click {
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -19,7 +23,12 @@ a {
 
 h4 {
   font-family: monospace;
-  font-size: .9rem
+  font-size: .9rem;
+  margin: .2rem 0;
+}
+
+h3 {
+  font-family: monospace;
 }
 
 .tp {

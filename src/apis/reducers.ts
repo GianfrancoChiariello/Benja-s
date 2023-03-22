@@ -5,6 +5,9 @@ export interface reducerStates {
     ventas: any;
     top5: any;
     top5pay: any,
+    newproducto: any,
+    productoID: any,
+    messageUpdate: any,
 }
 
 const initialState = {
@@ -13,7 +16,10 @@ const initialState = {
     tipos: [],
     ventas:[],
     top5: [],
-    top5pay: []
+    top5pay: [],
+    newproducto: [],
+    productoID: [],
+    messageUpdate: [],
 };
   
   export const userReducer = (state = initialState, action: any) => {
@@ -25,6 +31,12 @@ const initialState = {
           ...state,
           userLogin: action.payload,
         };
+
+      case 'NEWPRODUCTO':
+        return {
+          ...state,
+          newproducto: action.payload
+        }
 
         case 'PRODUCTOS':
             return {
@@ -54,6 +66,18 @@ const initialState = {
         return {
           ...state,
           top5pay: action.payload
+        }
+
+      case 'PRODUCTOID':
+        return {
+          ...state,
+          productoID: action.payload
+        }
+
+      case 'UPDATEPRODUCT': 
+        return {
+          ...state,
+          messageUpdate: action.payload
         }
 
       

@@ -1,11 +1,15 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import {useRouter} from 'next/router'
 
 
 const Productos = (productos: any) => {
     
+    const router = useRouter()
     const products = productos?.productos
+
+    
 
     return (
         <div style={{
@@ -51,9 +55,9 @@ const Productos = (productos: any) => {
                                 gap: '.5rem',
                                 marginTop: '.5rem'
                             }}>
-                                <DeleteIcon/>
-                                <EditIcon/>
-                                <RemoveRedEyeIcon/>
+                                <DeleteIcon className="click"/>
+                                <EditIcon onClick={() => router.push(`/actualizarProducto/${item._id}`)} className="click"/>
+                                <RemoveRedEyeIcon className="click"/>
                             </div>
                         </div>
                         

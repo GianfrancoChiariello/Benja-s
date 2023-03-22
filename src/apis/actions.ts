@@ -12,7 +12,8 @@ export const getProductos = async (marca: any,animal: any, etapa: any, empaque: 
 
             const data = await axios.get(`getProducts?marca=${marca}&animal=${animal}&etapa=${etapa}&empaque=${empaque}&peso=${peso}`, {
                 headers : {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "token" : window?.localStorage.getItem("TOKEN")
                 }
             })
 
@@ -33,6 +34,31 @@ export const getProductos = async (marca: any,animal: any, etapa: any, empaque: 
 
 }
 
+export const getProductoId = async (id: any) => {
+    console.log(id)
+    return async function (dispatch : any) {
+        try {
+
+            const data = await axios.get(`getProduct/${id}`,{
+                headers: {
+                    'Content-Type' : 'application/json',
+                    "token" : window?.localStorage.getItem("TOKEN")
+                }
+            })
+            return dispatch({
+                type: 'PRODUCTOID',
+                payload: data.data
+            })
+
+        } catch (error) {
+            console.log(error)            
+        }
+
+    }
+}
+
+
+
 export const getTypes = async () => {
     return async function (dispatch: any) {
             
@@ -40,11 +66,11 @@ export const getTypes = async () => {
     
                 const data = await axios.get(`getAllTypes`, {
                     headers : {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "token" : window?.localStorage.getItem("TOKEN")
                     }
                 })
                 .then((response) => {
-                    console.log(response.data)
                     return dispatch({
                         type: 'TIPOS',
                         payload: response.data
@@ -75,6 +101,9 @@ export const authGmail = async (object: any) => {
             }
             )
             .then((response) => {
+                if (response.data.token && window !== undefined) {
+                    window.localStorage.setItem("TOKEN", response.data.token)
+                }
                 return dispatch({
                     type: 'LOGIN',
                     payload: response.data
@@ -97,6 +126,7 @@ export const getVentasByDate = async (fecha: any) => {
             const data = await axios.get(`getVentasByDate?fecha=${fecha}`, {
                 headers: {
                     "Content-Type": "application/json",
+                    "token" : window?.localStorage.getItem("TOKEN")
                 },
             })
             return data.data
@@ -114,7 +144,8 @@ export const getAllVentas = async () => {
 
             const data = await axios.get('getVentas',{
                 headers: {
-                    "Content-Type" : "application/json"
+                    "Content-Type" : "application/json",
+                    "token" : window?.localStorage.getItem("TOKEN")
                 }
             })
             return dispatch({
@@ -136,7 +167,8 @@ export const getTop5 = async () => {
 
             const data = await axios.get('getTop5', {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "token" : window?.localStorage.getItem("TOKEN")
                 }
             })
             return dispatch({
@@ -159,7 +191,8 @@ export const getTop5Payments = async () => {
 
             const data = await axios.get('getTop5Payments', {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "token" : window?.localStorage.getItem("TOKEN")
                 }
             })
 
@@ -176,3 +209,52 @@ export const getTop5Payments = async () => {
 
 }
 
+
+
+//Productos
+
+
+export const newProducto = async (obj: any) => {
+    return async function (dispatch: any) {
+        try {
+            const data = await axios.post('newProduct', obj,{
+                headers: {
+                    'Content-Type' : 'application/json',
+                    "token" : window?.localStorage.getItem("TOKEN")
+                }
+            })
+            return dispatch({
+                type: 'NEWPRODUCTO',
+                payload: data.data
+            })
+
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+}
+
+export const updateProduct = async (obj: any, id: any) => {
+    console.log(obj)
+    return async function (dispatch: any) {
+
+        try {
+            
+            const data = await axios.put('updateProduct/' + id, obj, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    "token" : window?.localStorage.getItem("TOKEN")
+                }
+            })
+            return dispatch({
+                type: 'UPDATEPRODUCT',
+                payload: data.data
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}

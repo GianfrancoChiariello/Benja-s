@@ -24,21 +24,6 @@ const Maquet = ({children, title} : any) => {
     const infoUser = useSelector((state : any) => state.userLogin.payload)
 
 
-    const rutas = [
-        {
-            ruta: '/dashboard',
-            title: 'Dashboard'
-        },
-        {
-            ruta: '/productos',
-            title: 'Productos'
-        },        
-        {
-            ruta: '/ventas',
-            title: 'Ventas'
-        },
-    ]
-
     return (
 
         <div style={{
@@ -86,7 +71,7 @@ const Maquet = ({children, title} : any) => {
                                             borderRadius: '.6rem',
                                             padding: '.2rem 1rem'
                                         }}>
-                                            <Link href="dashboard">
+                                            <Link href="/dashboard">
                                                 Dashboard
                                             </Link>
                             </div>
@@ -107,17 +92,17 @@ const Maquet = ({children, title} : any) => {
                                     }}>Productos</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
-                                        <Typography className='tp' onClick={() => router.push('productos')}>
+                                        <Typography className='tp' onClick={() => router.push('/productos')}>
                                                 Stock
                                         </Typography>
                                     </AccordionDetails>
                                     <AccordionDetails>
-                                        <Typography className='tp'  onClick={() => router.push('nuevoProducto')}>
+                                        <Typography className='tp'  onClick={() => router.push('/nuevoProducto')}>
                                                 Nuevo
                                         </Typography>
                                     </AccordionDetails>
                                     <AccordionDetails>
-                                        <Typography className='tp'  onClick={() => router.push('actualizarProducto')}>
+                                        <Typography className='tp'  onClick={() => router.push('/productos')}>
                                                 Actualizar
                                         </Typography>
                                     </AccordionDetails>
@@ -128,7 +113,7 @@ const Maquet = ({children, title} : any) => {
                                             borderRadius: '.6rem',
                                             padding: '.2rem 1rem'
                                         }}>
-                                            <Link href="ventas">
+                                            <Link href="/ventas">
                                                 Ventas
                                             </Link>
                             </div>
