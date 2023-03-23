@@ -84,41 +84,6 @@ export const getTypes = async () => {
         }
 }
 
-export const authGmail = async (object: any) => {
-    return async function (dispatch: any) {
-
-        try {
-
-            const data = axios.post('gmailVerify', {
-                "credential": object.credential,
-                "clientId": object.clientId,
-                "select_by": object.select_by
-            },
-            {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-            }
-            )
-            .then((response) => {
-                if (response.data.token && window !== undefined) {
-                    window.localStorage.setItem("TOKEN", response.data.token)
-                }
-                return dispatch({
-                    type: 'LOGIN',
-                    payload: response.data
-                })
-            })
-
-        } catch (e: any) {
-            return dispatch({
-                type: 'LOGIN',
-                payload: e
-            })
-        }
-
-    }
-}
 
 export const getVentasByDate = async (fecha: any) => {
         try {
@@ -257,4 +222,95 @@ export const updateProduct = async (obj: any, id: any) => {
         }
 
     }
+}
+
+
+
+//AUTH
+
+export const authGmail = async (object: any) => {
+    return async function (dispatch: any) {
+
+        try {
+
+            const data = axios.post('gmailVerify', {
+                "credential": object.credential,
+                "clientId": object.clientId,
+                "select_by": object.select_by
+            },
+            {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+            }
+            )
+            .then((response) => {
+                if (response.data.token && window !== undefined) {
+                    window.localStorage.setItem("TOKEN", response.data.token)
+                }
+                return dispatch({
+                    type: 'LOGIN',
+                    payload: response.data
+                })
+            })
+
+        } catch (e: any) {
+            return dispatch({
+                type: 'LOGIN',
+                payload: e
+            })
+        }
+
+    }
+}
+
+
+export const singIn = async (values: any) => {
+
+    return async function (dispatch : any) {
+
+
+        try {
+
+            const data = await axios.post('signIn', values)
+            window !== undefined ? window.localStorage.setItem('TOKEN', data.data.token) : null
+            return dispatch({
+                type: 'SIGNIN',
+                payload: data.data
+            })
+
+        } catch (error) {
+            return dispatch({
+                type: 'SIGNIN',
+                payload: error
+            })
+        }
+
+
+    }
+
+}
+
+export const createAccount = async (values: any) => {
+
+    return async function (dispatch: any) {
+
+        try {
+            
+            const data = await axios.post('createAccount', values)
+
+            return dispatch({
+                type: 'CREATEACCOUNT',
+                payload: data.data
+            })
+
+        } catch (error) {
+            return dispatch({
+                type: 'CREATEACCOUNT',
+                payload: error
+            })
+        }
+
+    }
+
 }

@@ -8,6 +8,8 @@ export interface reducerStates {
     newproducto: any,
     productoID: any,
     messageUpdate: any,
+    data: any,
+    messageCreate: any,
 }
 
 const initialState = {
@@ -20,6 +22,8 @@ const initialState = {
     newproducto: [],
     productoID: [],
     messageUpdate: [],
+    data: [],
+    messageCreate: [],
 };
   
   export const userReducer = (state = initialState, action: any) => {
@@ -31,6 +35,18 @@ const initialState = {
           ...state,
           userLogin: action.payload,
         };
+
+      case 'CREATEACCOUNT':
+        return {
+          ...state,
+          messageCreate: action.payload
+        }
+
+      case 'SIGNIN':
+        return {
+          ...state,
+          data: action.payload
+        }
 
       case 'NEWPRODUCTO':
         return {
