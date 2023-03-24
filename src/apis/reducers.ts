@@ -10,6 +10,7 @@ export interface reducerStates {
     messageUpdate: any,
     data: any,
     messageCreate: any,
+    messageDelete: any,
 }
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
     messageUpdate: [],
     data: [],
     messageCreate: [],
+    messageDelete: ""
 };
   
   export const userReducer = (state = initialState, action: any) => {
@@ -35,6 +37,12 @@ const initialState = {
           ...state,
           userLogin: action.payload,
         };
+
+      case 'DELETEPRODUCT':
+        return {
+          ...state,
+          messageDelete: action.payload
+        }
 
       case 'CREATEACCOUNT':
         return {

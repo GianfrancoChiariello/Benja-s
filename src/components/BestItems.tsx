@@ -27,19 +27,22 @@ const BestItems = () => {
 
     },[])
 
+
     return (
 
         <div>
 
-            {
-                top5 && top5?.map((item: any) => {
+            { top5.length > 0 &&
+                top5 ? top5?.map((item: any, index: any) => {
 
                     return (
                         <div style={{
                             margin: '1.2rem',
                             fontSize: '.8rem',
                             fontFamily: 'monospace',
-                        }}>
+                        }}
+                        key={index}
+                        >
                             <label>{item._id}</label>
                             <LinearProgress color='inherit' variant="determinate" value={item.count * 2} style={{
                                 height: '10px',
@@ -50,7 +53,17 @@ const BestItems = () => {
                         </div>
                     )
                     
-                })
+                }) : (
+                    <div style={{
+                        margin: '1.2rem',
+                        fontSize: '.8rem',
+                        fontFamily: 'monospace',
+                        textAlign: 'center'
+                    }}
+                    >
+                        <label>Aun no hay ventas</label>
+                    </div>
+                )
             }
 
         </div>

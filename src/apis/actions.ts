@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:9000/api/"
 
 
-export const getProductos = async (marca: any,animal: any, etapa: any, empaque: any, peso: any) => {
+export const getProductos = async (marca = "",animal="", etapa="", empaque="", peso="") => {
     
     return async function (dispatch: any) {
 
@@ -18,8 +18,6 @@ export const getProductos = async (marca: any,animal: any, etapa: any, empaque: 
             })
 
             .then((response) => {
-                console.log(response.data)
-
                 return dispatch({
                     type: 'PRODUCTOS',
                     payload: response.data
@@ -224,6 +222,34 @@ export const updateProduct = async (obj: any, id: any) => {
     }
 }
 
+export const deleteProduct = async (id: any) => {
+
+    return async function (dispatch: any) {
+
+        try {
+            
+            const data = await axios.delete(`deleteProduct/${id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "token": window.localStorage.getItem('TOKEN')
+                }
+            })
+            dispatch({
+                type: 'DELETEPRODUCT',
+                payload: data.data.message
+            })
+
+            const refresh = await getProductos()
+            dispatch(refresh)
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+}
+
 
 
 //AUTH
@@ -247,6 +273,7 @@ export const authGmail = async (object: any) => {
             .then((response) => {
                 if (response.data.token && window !== undefined) {
                     window.localStorage.setItem("TOKEN", response.data.token)
+                    window.localStorage.setItem("infoUser", JSON.stringify(response.data.payload))
                 }
                 return dispatch({
                     type: 'LOGIN',

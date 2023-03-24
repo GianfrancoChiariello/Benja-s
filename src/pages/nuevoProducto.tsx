@@ -20,17 +20,20 @@ import {
 import {
     newProducto
 } from '../apis/actions'
+import {
+    useRouter
+} from 'next/router'
 
 const nuevoProducto = () => {
 
 
     const dispatch = useDispatch()
-    const [alertt, setAlertt] = useState(false)
-
+    const router = useRouter()
+    
     const message = useSelector((state: any) => state.newproducto)
-
+    
+    const [alertt, setAlertt] = useState(false)
     const [selector, setSelector] = useState("kgs")
-
     const [producto, setProducto] = useState("")
     const [mascota, setMascota] = useState("Perros")
     const [empaque, setEmpaque] = useState("Bolsa")
@@ -85,8 +88,6 @@ const nuevoProducto = () => {
                     setTimeout(() => {
                         setAlertt(false)
                     }, 5000);
-
-                    setProducto("")
                 })
                 
             })
@@ -98,6 +99,10 @@ const nuevoProducto = () => {
         }
 
     }
+
+    useEffect(() => {
+        setTimeout(() => {alertt === true ? router.push('productos') : null}, 3000);
+    },[alertt])
 
 
     return (
@@ -111,7 +116,7 @@ const nuevoProducto = () => {
             }}>
 
                 <Snackbar open={alertt} autoHideDuration={6000}>
-                    <Alert onClose={() => setAlertt(false)} severity="success" sx={{ width: '100%' }}>
+                    <Alert onClose={() => setAlertt(false)} severity={message?.message === "Producto creado con éxito" ? "success" : "error"} sx={{ width: '100%' }}>
                         {message?.message}
                     </Alert>
                 </Snackbar>

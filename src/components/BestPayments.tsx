@@ -31,14 +31,16 @@ const BestPayments = () => {
         <div>
 
             {
-                top5pay && top5pay?.map((item: any) => {
+                top5pay && top5pay.length > 0 ? top5pay?.map((item: any, index: any) => {
 
                     return (
                         <div style={{
                             margin: '1.2rem',
                             fontSize: '.8rem',
                             fontFamily: 'monospace',
-                        }}>
+                        }}
+                        key={index}
+                        >
                             <label>{item._id}</label>
                             <LinearProgress color='inherit' variant="determinate" value={item.count * 2} style={{
                                 height: '10px',
@@ -49,7 +51,17 @@ const BestPayments = () => {
                         </div>
                     )
                     
-                })
+                }) : (
+                    <div style={{
+                        margin: '1.2rem',
+                        fontSize: '.8rem',
+                        fontFamily: 'monospace',
+                        textAlign: 'center'
+                    }}
+                    >
+                        <label>Aun no hay metodos registrados</label>
+                    </div>
+                )
             }
 
         </div>

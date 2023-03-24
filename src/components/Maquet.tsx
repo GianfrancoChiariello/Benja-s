@@ -23,6 +23,11 @@ const Maquet = ({children, title} : any) => {
 
     const infoUser = useSelector((state : any) => state.userLogin.payload)
 
+    const logout = () => {
+        window.location.href = '/'
+        window.localStorage.clear()
+    }
+
 
     return (
 
@@ -122,8 +127,8 @@ const Maquet = ({children, title} : any) => {
                     </div>
 
                     <div>
-                        <h4>Settings</h4>
-                        <h4>Logout</h4>
+                        <h4 className='click'>Settings</h4>
+                        <h4 className='click' onClick={logout}>Logout</h4>
                     </div>
                 </div>
 
