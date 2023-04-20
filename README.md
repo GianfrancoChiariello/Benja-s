@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Proyecto basico de Product dashboard.
+
+Notas:
+Se utiliza typescript sin interfaces
+Se utiliza redux thunk
+Custom hooks
+Recycle arquitec
+
+-----------------------
 
 ## Getting Started
 
