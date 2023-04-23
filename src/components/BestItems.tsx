@@ -9,7 +9,7 @@ import {
 } from 'react'
 import {
     getTop5
-} from '../apis/actions'
+} from '../services/actions'
 
 
 
@@ -17,11 +17,11 @@ const BestItems = () => {
 
     const dispatch = useDispatch()
 
-    const top5 = useSelector((state: any) => state?.top5)
+    const top5 = useSelector((state: any) => state?.ventas.top5)
 
     useEffect(() => {
 
-        getTop5().then((res) => {
+        getTop5().then((res : any) => {
             dispatch<any>(res)
         })
 
@@ -32,7 +32,7 @@ const BestItems = () => {
 
         <div>
 
-            { top5.length > 0 &&
+            { top5?.length > 0 &&
                 top5 ? top5?.map((item: any, index: any) => {
 
                     return (

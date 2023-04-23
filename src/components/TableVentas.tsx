@@ -15,7 +15,9 @@ import CircleIcon from '@mui/icons-material/Circle';
 
 const TableVentas = () => {
 
-    const ventas = useSelector((state: any) => state?.ventas)
+    const ventas = useSelector((state: any) => state?.ventas?.ventas)
+
+    console.log(ventas)
 
     return (
         <div>
@@ -33,7 +35,7 @@ const TableVentas = () => {
                     </TableRow>
                     </TableHead>
                     <TableBody>
-                    {ventas && ventas.slice(ventas.length - 5).reverse().map((row : any, index: any) => (
+                    {ventas ? ventas?.slice(ventas?.length - 5).reverse().map((row : any, index: any) => (
                         <TableRow
                         key={index}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -51,7 +53,10 @@ const TableVentas = () => {
                         <TableCell align="right">{row.total} ARS</TableCell>
                         <TableCell align="right"><MoreVertIcon/></TableCell>
                         </TableRow>
-                    ))}
+                    )) : (
+                        <h1>no hay ventas</h1>
+                    )
+                }
                     </TableBody>
                 </Table>
             </TableContainer>

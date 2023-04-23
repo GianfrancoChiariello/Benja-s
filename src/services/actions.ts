@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = "http://localhost:9000/api/"
+axios.defaults.baseURL = "https://backend-1-0.vercel.app/api/"
 
 
 export const getProductos = async (marca = "",animal="", etapa="", empaque="", peso="") => {
@@ -17,11 +17,9 @@ export const getProductos = async (marca = "",animal="", etapa="", empaque="", p
                 }
             })
 
-            .then((response) => {
-                return dispatch({
-                    type: 'PRODUCTOS',
-                    payload: response.data
-                })
+            return dispatch({
+                type: 'PRODUCTOS',
+                payload: data.data
             })
 
         } catch (error) {
@@ -68,11 +66,9 @@ export const getTypes = async () => {
                         "token" : window?.localStorage.getItem("TOKEN")
                     }
                 })
-                .then((response) => {
-                    return dispatch({
-                        type: 'TIPOS',
-                        payload: response.data
-                    })
+                return dispatch({
+                    type: 'TIPOS',
+                    payload: data.data
                 })
     
             } catch (error) {
@@ -111,6 +107,7 @@ export const getAllVentas = async () => {
                     "token" : window?.localStorage.getItem("TOKEN")
                 }
             })
+            console.log(data)
             return dispatch({
                 type: 'VENTAS',
                 payload: data.data

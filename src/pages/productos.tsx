@@ -10,7 +10,7 @@ import {
 import {
     getProductos,
     getTypes
-} from '../apis/actions'
+} from '../services/actions'
 
 import Productos from '@/components/Productos'
 import {
@@ -32,8 +32,11 @@ const productos = () => {
     const [empaque,setEmpaque] = useState("")
     const [peso,setPeso] = useState("")
 
-    const productos = useSelector((state: any) => state.productos)
-    const tipos = useSelector((state: any) => state.tipos)
+    const productos = useSelector((state: any) => state?.productos.productos)
+    const tipos = useSelector((state: any) => state?.tipos)
+
+
+    console.log(productos)
 
 
 
@@ -150,7 +153,11 @@ const productos = () => {
                     </FormControl>
                 </div>
 
-                <Productos productos={productos}/>
+                {
+                    productos?.length > 0
+                    && <Productos productos={productos}/>
+                }
+
             </div>
 
         </Maquet>

@@ -34,13 +34,13 @@ import {
 
 import {
     getAllVentas
-} from '../apis/actions'
+} from '../services/actions'
 
 
 const LineGraph = () => {
 
     const dispatch = useDispatch()
-    const ventas = useSelector((state: any) => state.ventas)
+    const ventas = useSelector((state: any) => state.ventas.ventas) || []
 
     useEffect(() => {
         getAllVentas().then((res) => {
@@ -64,14 +64,14 @@ const LineGraph = () => {
       };
       
       
-      const labels = ventas?.slice(ventas > 15 ? ventas.length - 10 : ventas.length - 5).map((item: any) => item.fecha.slice(0, 10))
+      const labels = ventas && ventas?.slice(ventas > 15 ? ventas.length - 10 : ventas.length - 5).map((item: any) => item.fecha.slice(0, 10)) || []
       
        const data = {
         labels,
         datasets: [
           {
             fill: true,
-            data: ventas?.slice(ventas > 15 ? ventas.length - 10 : ventas.length - 5).map((item : any) => item.total),
+            data: ventas && ventas?.slice(ventas > 15 ? ventas.length - 10 : ventas.length - 5).map((item : any) => item.total),
             borderColor: 'rgb(53, 162, 235)',
             backgroundColor: 'rgba(53, 162, 235, 0.5)',
           },

@@ -4,7 +4,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import {useRouter} from 'next/router'
 import {
     deleteProduct
-} from '../apis/actions'
+} from '../services/actions'
 import {
     useDispatch,
     useSelector
@@ -19,6 +19,8 @@ import {
 
 
 const Productos = (productos: any) => {
+
+    console.log(productos,"productos")
     
     const dispatch = useDispatch()
     const router = useRouter()
@@ -52,7 +54,7 @@ const Productos = (productos: any) => {
 
 
             {
-                products && products.map((item: any, index: any) => {
+                products && products?.map((item: any, index: any) => {
                     return (
                         <div style={{
                             backgroundColor: 'rgba(46, 46, 72, 1)',

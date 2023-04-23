@@ -8,7 +8,7 @@ import {
 } from 'react'
 import {
     getTop5Payments
-} from '../apis/actions'
+} from '../services/actions'
 
 
 
@@ -16,7 +16,7 @@ const BestPayments = () => {
 
     const dispatch = useDispatch()
 
-    const top5pay = useSelector((state: any) => state?.top5pay)
+    const top5pay = useSelector((state: any) => state?.ventas.top5pay)
 
     useEffect(() => {
 

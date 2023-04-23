@@ -7,7 +7,7 @@ import {
 
 import {
     getVentasByDate
-} from '../apis/actions'
+} from '../services/actions'
 import {
     useDispatch,
     useSelector
@@ -44,7 +44,7 @@ const Cards = ({time,objetivo} : any) => {
 
 
     //@ts-ignore
-    const gains = datos?.reduce((a,b) => a + b.total, 0)
+    const gains = datos && datos?.reduce((a,b) => a + b.total, 0)
 
     let porcentaje = (gains * 100) / objetivo
 

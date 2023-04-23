@@ -8,7 +8,7 @@ import {
     authGmail,
     singIn,
     createAccount
-} from '../apis/actions'
+} from '../services/actions'
 import { useState } from "react";
 import {useRouter} from 'next/router'
 import { useFormik } from 'formik';
@@ -35,8 +35,10 @@ const Login = () => {
         })
     }
 
-    const message = useSelector( (state: any) => state.data.message )
-    const messageCreate = useSelector((state: any) => state.messageCreate.Message)
+    const message = useSelector( (state: any) => state?.data?.message )
+    const messageCreate = useSelector((state: any) => state?.messageCreate?.Message)
+
+    console.log(message)
 
     useEffect(() => {
         message === "successful login" ? router.push('dashboard') : null

@@ -13,15 +13,15 @@ import {
     Accordion
 } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Cart from '@/components/Cart';
 
 
-
-const Maquet = ({children, title} : any) => {
+const Maquet = ({children, title,venta} : any) => {
 
     const router = useRouter()
     const  url  = router.asPath
 
-    const infoUser = useSelector((state : any) => state.userLogin.payload)
+    const infoUser = useSelector((state : any) => state?.userLogin?.payload)
 
     const logout = () => {
         window.location.href = '/'
@@ -154,8 +154,12 @@ const Maquet = ({children, title} : any) => {
                             borderRadius: '20rem',
                             overflow: 'hidden',
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            gap:'1rem'
                         }}>
+                            {
+                                venta && <Cart/>
+                            }
                             <img src={infoUser?.picture} width="30px" />
                         </div>
                     </div>
