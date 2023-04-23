@@ -18,27 +18,27 @@ import {
     Snackbar,
     Alert
 } from '@mui/material'
+import {
+    State
+} from '../../models/state'
 
 const Login = () => {
 
     const dispatch = useDispatch()
     const router = useRouter()
 
+    const message = useSelector( (state: State) => state?.user.data?.message )
+    const messageCreate = useSelector((state: State) => state?.user.messageCreate?.Message)
+
+
     const [option,setOption] = useState(true)
     const [alertt,setAlertt] = useState(false)
 
     const verify = (data: any) => {
-        authGmail(data)
-        .then((response) => {
-            dispatch<any>(response)
-            router.push('dashboard')
+        authGmail(data).then((response) => {
+            dispatch<any>(response).finally(() => router.push('dashboard'))
         })
     }
-
-    const message = useSelector( (state: any) => state?.data?.message )
-    const messageCreate = useSelector((state: any) => state?.messageCreate?.Message)
-
-    console.log(message)
 
     useEffect(() => {
         message === "successful login" ? router.push('dashboard') : null
@@ -49,8 +49,7 @@ const Login = () => {
         initialValues: {
           email: '',
           password: '',
-        }
-        ,
+        },
         
         onSubmit: values => {
             option 

@@ -1,4 +1,4 @@
-const initialState = {
+const usersInitialState = {
     userLogin: [],
     productos: [],
     tipos: [],
@@ -10,8 +10,22 @@ const initialState = {
     messageDelete: "",
     carrito: [],
 };
+const productosInitialState = {
+  productos: [],
+  newproducto: [],
+  productoID:[],
+  messageUpdate: [],
+  carrito: [],
+  tipos: [],
+  messageDelete: [],
+};
+const ventasInitialState = {
+  ventas:[],
+  top5: [],
+  top5pay: [],
+};
   
-  export const userReducer = (state = initialState, action: any) => {
+export const userReducer = (state = usersInitialState, action: any) => {
 
     console.log(action.type)
   
@@ -39,22 +53,9 @@ const initialState = {
       default:
         return state;
     }
-  };
+};
 
-
-  const productosInitialState = {
-    productos: [],
-    newproducto: [],
-    productoID:[],
-    messageUpdate: [],
-    carrito: [],
-    tipos: [],
-    messageDelete: [],
-  }
-
-
-
-  export const productsReducer = (state = productosInitialState, action: any) => {
+export const productsReducer = (state = productosInitialState, action: any) => {
 
     console.log(action.type)
 
@@ -100,17 +101,9 @@ const initialState = {
         default:
           return state;
     }
-  }
+};
   
-
-
-  const ventasInitialState = {
-    ventas:[],
-    top5: [],
-    top5pay: [],
-  }
-
-  export const ventasReducer = (state = ventasInitialState, action: any) => {
+export const ventasReducer = (state = ventasInitialState, action: any) => {
     console.log(action.type)
 
     switch (action.type) {
@@ -135,4 +128,4 @@ const initialState = {
     default:
       return state
     }
-  }
+};

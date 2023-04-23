@@ -6,16 +6,9 @@ axios.defaults.baseURL = "https://backend-1-0.vercel.app/api/"
 export const getProductos = async (marca = "",animal="", etapa="", empaque="", peso="") => {
     
     return async function (dispatch: any) {
-
-
         try {
 
-            const data = await axios.get(`getProducts?marca=${marca}&animal=${animal}&etapa=${etapa}&empaque=${empaque}&peso=${peso}`, {
-                headers : {
-                    "Content-Type": "application/json",
-                    "token" : window?.localStorage.getItem("TOKEN")
-                }
-            })
+            const data = await axios.get(`getProducts?marca=${marca}&animal=${animal}&etapa=${etapa}&empaque=${empaque}&peso=${peso}`)
 
             return dispatch({
                 type: 'PRODUCTOS',
@@ -107,7 +100,6 @@ export const getAllVentas = async () => {
                     "token" : window?.localStorage.getItem("TOKEN")
                 }
             })
-            console.log(data)
             return dispatch({
                 type: 'VENTAS',
                 payload: data.data
