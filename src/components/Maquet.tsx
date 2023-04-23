@@ -102,7 +102,7 @@ const Maquet = ({children, title,venta} : any) => {
                                         </Typography>
                                     </AccordionDetails>
                                     <AccordionDetails>
-                                        <Typography className='tp'  onClick={() => router.push('/nuevoProducto')}>
+                                        <Typography className='tp'  onClick={() => router.push('/productos/nuevo')}>
                                                 Nuevo
                                         </Typography>
                                     </AccordionDetails>

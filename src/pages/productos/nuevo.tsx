@@ -1,4 +1,4 @@
-import Maquet from '../components/Maquet'
+import Maquet from '../../components/Maquet'
 import {
     TextField,
     Button,
@@ -19,7 +19,7 @@ import {
 
 import {
     newProducto
-} from '../apis/actions'
+} from '../../services/actions'
 import {
     useRouter
 } from 'next/router'

@@ -5,7 +5,7 @@ import Maquet from '../../components/Maquet'
 import {
     getProductoId,
     updateProduct
-} from '../../apis/actions'
+} from '../../services/actions'
 import {
     useDispatch,
     useSelector,

@@ -1,4 +1,4 @@
-import Maquet from '../components/Maquet'
+import Maquet from '../../components/Maquet'
 import {
     useEffect,
     useState
@@ -10,7 +10,7 @@ import {
 import {
     getProductos,
     getTypes
-} from '../services/actions'
+} from '../../services/actions'
 
 import Productos from '@/components/Productos'
 import {

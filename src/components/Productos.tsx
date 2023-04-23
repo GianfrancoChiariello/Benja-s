@@ -93,7 +93,7 @@ const Productos = (productos: any) => {
                                     marginTop: '.5rem'
                                 }}>
                                     <DeleteIcon onClick={() => deleteProducto(item._id)}  className="click"/>
-                                    <EditIcon onClick={() => router.push(`/actualizarProducto/${item._id}`)} className="click"/>
+                                    <EditIcon onClick={() => router.push(`/update/${item._id}`)} className="click"/>
                                     <RemoveRedEyeIcon className="click"/>
                                 </div>
                             </div>

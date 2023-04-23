@@ -1,4 +1,4 @@
-import Maquet from '../components/Maquet'
+import Maquet from '../../components/Maquet'
 import {
     TextField,
     Button,
@@ -33,13 +33,13 @@ import {
     newProducto,
     getProductos,
     getTypes
-} from '../services/actions'
+} from '../../services/actions'
 import {
     useRouter
 } from 'next/router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCat,faDog,faBox } from '@fortawesome/free-solid-svg-icons'
-import Modals from '../components/Modal'
+import Modals from '../../components/Modal'
 
 const ventas = () => {
 

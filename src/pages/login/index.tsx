@@ -8,7 +8,7 @@ import {
     authGmail,
     singIn,
     createAccount
-} from '../services/actions'
+} from '../../services/actions'
 import { useState } from "react";
 import {useRouter} from 'next/router'
 import { useFormik } from 'formik';
