@@ -4,7 +4,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import {useRouter} from 'next/router'
 import {
     deleteProduct
-} from '../services/actions'
+} from '../../../services/actions'
 import {
     useDispatch,
     useSelector

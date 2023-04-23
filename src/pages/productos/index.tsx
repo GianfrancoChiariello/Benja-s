@@ -12,13 +12,16 @@ import {
     getTypes
 } from '../../services/actions'
 
-import Productos from '@/components/Productos'
+import Productos from '@/pages/productos/components/Productos'
 import {
     FormControl,
     MenuItem,
     Select,
     InputLabel,
 } from '@mui/material'
+import {
+    State
+} from '../../models/model.state'
 
 
 
@@ -32,13 +35,8 @@ const productos = () => {
     const [empaque,setEmpaque] = useState("")
     const [peso,setPeso] = useState("")
 
-    const productos = useSelector((state: any) => state?.productos.productos)
-    const tipos = useSelector((state: any) => state?.tipos)
-
-
-    console.log(productos)
-
-
+    const productos = useSelector((state: State) => state?.productos.productos)
+    const tipos = useSelector((state: State) => state?.productos.tipos)
 
     useEffect(() => {
 
@@ -79,7 +77,7 @@ const productos = () => {
                             }}
                         >
                             {
-                                tipos && tipos['marcas']?.map((item: any) => {
+                                tipos && tipos['marcas']?.map((item: string) => {
                                     return (
                                         <MenuItem value={item}>{item}</MenuItem>
                                     )
@@ -100,7 +98,7 @@ const productos = () => {
                             }}
                         >
                             {
-                                tipos && tipos['animales']?.map((item: any) => {
+                                tipos && tipos['animales']?.map((item: string) => {
                                     return (
                                         <MenuItem value={item}>{item}</MenuItem>
                                     )
@@ -121,7 +119,7 @@ const productos = () => {
                             }}
                         >
                             {
-                                tipos && tipos['empaques']?.map((item: any) => {
+                                tipos && tipos['empaques']?.map((item: string) => {
                                     return (
                                         <MenuItem value={item}>{item}</MenuItem>
                                     )
@@ -142,7 +140,7 @@ const productos = () => {
                             }}
                         >
                             {
-                                tipos && tipos['pesos']?.map((item: any) => {
+                                tipos && tipos['pesos']?.map((item: number) => {
                                     return (
                                         <MenuItem value={item}>{item}</MenuItem>
                                     )

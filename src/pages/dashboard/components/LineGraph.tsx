@@ -34,7 +34,7 @@ import {
 
 import {
     getAllVentas
-} from '../services/actions'
+} from '../../../services/actions'
 
 
 const LineGraph = () => {

@@ -1,32 +1,31 @@
+import { 
+  Products,
+  Tipos,
+} from '@/pages/productos/models/model.productos'
+
 import {
-  messageCreate
+  messageCreate,
 } from '../pages/login/models/model.user'
 
 export interface State {
     user: {
         userLogin: [],
-        productos: [],
-        tipos: [],
-        newproducto: [],
-        productoID: [],
         messageUpdate: [],
         data: {
           message: string,
           token: string
-      },
-        messageCreate: messageCreate,
-        messageDelete: string,
-        carrito: []
-      },
+        },
+    },
       
       productos: {
-        productos: [],
+        productos: Products[],
+        tipos: Tipos,
         newproducto: [],
+        messageCreate: messageCreate,
+        messageDelete: string,
         productoID: [],
         messageUpdate: [],
         carrito: [],
-        tipos: [],
-        messageDelete: []
       },
       
       ventas: { 

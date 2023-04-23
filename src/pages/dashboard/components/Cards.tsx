@@ -7,7 +7,7 @@ import {
 
 import {
     getVentasByDate
-} from '../services/actions'
+} from '../../../services/actions'
 import {
     useDispatch,
     useSelector

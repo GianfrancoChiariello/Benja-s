@@ -5,35 +5,33 @@ import {
 } from 'react-redux'
 import {
     useEffect,
-    useState
 } from 'react'
 import {
-    getTop5
-} from '../services/actions'
+    getTop5Payments
+} from '../../../services/actions'
 
 
 
-const BestItems = () => {
+const BestPayments = () => {
 
     const dispatch = useDispatch()
 
-    const top5 = useSelector((state: any) => state?.ventas.top5)
+    const top5pay = useSelector((state: any) => state?.ventas.top5pay)
 
     useEffect(() => {
 
-        getTop5().then((res : any) => {
+        getTop5Payments().then((res) => {
             dispatch<any>(res)
         })
 
     },[])
 
-
     return (
 
         <div>
 
-            { top5?.length > 0 &&
-                top5 ? top5?.map((item: any, index: any) => {
+            {
+                top5pay && top5pay.length > 0 ? top5pay?.map((item: any, index: any) => {
 
                     return (
                         <div style={{
@@ -61,7 +59,7 @@ const BestItems = () => {
                         textAlign: 'center'
                     }}
                     >
-                        <label>Aun no hay ventas</label>
+                        <label>Aun no hay metodos registrados</label>
                     </div>
                 )
             }
@@ -71,4 +69,4 @@ const BestItems = () => {
     )
 }
 
-export default BestItems
+export default BestPayments

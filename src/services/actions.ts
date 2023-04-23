@@ -28,12 +28,7 @@ export const getProductoId = async (id: any) => {
     return async function (dispatch : any) {
         try {
 
-            const data = await axios.get(`getProduct/${id}`,{
-                headers: {
-                    'Content-Type' : 'application/json',
-                    "token" : window?.localStorage.getItem("TOKEN")
-                }
-            })
+            const data = await axios.get(`getProduct/${id}`)
             return dispatch({
                 type: 'PRODUCTOID',
                 payload: data.data
@@ -53,12 +48,7 @@ export const getTypes = async () => {
             
             try {
     
-                const data = await axios.get(`getAllTypes`, {
-                    headers : {
-                        "Content-Type": "application/json",
-                        "token" : window?.localStorage.getItem("TOKEN")
-                    }
-                })
+                const data = await axios.get(`getAllTypes`)
                 return dispatch({
                     type: 'TIPOS',
                     payload: data.data
@@ -75,12 +65,7 @@ export const getTypes = async () => {
 export const getVentasByDate = async (fecha: any) => {
         try {
 
-            const data = await axios.get(`getVentasByDate?fecha=${fecha}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "token" : window?.localStorage.getItem("TOKEN")
-                },
-            })
+            const data = await axios.get(`getVentasByDate?fecha=${fecha}`)
             return data.data
 
         } catch (e: any) {
@@ -94,12 +79,7 @@ export const getAllVentas = async () => {
 
         try {
 
-            const data = await axios.get('getVentas',{
-                headers: {
-                    "Content-Type" : "application/json",
-                    "token" : window?.localStorage.getItem("TOKEN")
-                }
-            })
+            const data = await axios.get('getVentas')
             return dispatch({
                 type: 'VENTAS',
                 payload: data.data
@@ -117,12 +97,7 @@ export const getTop5 = async () => {
 
         try {
 
-            const data = await axios.get('getTop5', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    "token" : window?.localStorage.getItem("TOKEN")
-                }
-            })
+            const data = await axios.get('getTop5')
             return dispatch({
                 type: 'TOP5',
                 payload: data.data
@@ -141,12 +116,7 @@ export const getTop5Payments = async () => {
 
         try {
 
-            const data = await axios.get('getTop5Payments', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    "token" : window?.localStorage.getItem("TOKEN")
-                }
-            })
+            const data = await axios.get('getTop5Payments')
 
             return dispatch({
                 type: 'TOP5PAY',
@@ -169,12 +139,7 @@ export const getTop5Payments = async () => {
 export const newProducto = async (obj: any) => {
     return async function (dispatch: any) {
         try {
-            const data = await axios.post('newProduct', obj,{
-                headers: {
-                    'Content-Type' : 'application/json',
-                    "token" : window?.localStorage.getItem("TOKEN")
-                }
-            })
+            const data = await axios.post('newProduct', obj)
             return dispatch({
                 type: 'NEWPRODUCTO',
                 payload: data.data
@@ -193,12 +158,7 @@ export const updateProduct = async (obj: any, id: any) => {
 
         try {
             
-            const data = await axios.put('updateProduct/' + id, obj, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    "token" : window?.localStorage.getItem("TOKEN")
-                }
-            })
+            const data = await axios.put('updateProduct/' + id, obj)
             return dispatch({
                 type: 'UPDATEPRODUCT',
                 payload: data.data
@@ -217,12 +177,7 @@ export const deleteProduct = async (id: any) => {
 
         try {
             
-            const data = await axios.delete(`deleteProduct/${id}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "token": window.localStorage.getItem('TOKEN')
-                }
-            })
+            const data = await axios.delete(`deleteProduct/${id}`)
             dispatch({
                 type: 'DELETEPRODUCT',
                 payload: data.data.message

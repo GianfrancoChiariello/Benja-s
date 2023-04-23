@@ -1,3 +1,3 @@
 export interface messageCreate {
-    Message : String
+    Message : string
 }

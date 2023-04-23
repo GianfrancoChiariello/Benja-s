@@ -20,7 +20,7 @@ import {
 } from '@mui/material'
 import {
     State
-} from '../../models/state'
+} from '../../models/model.state'
 
 const Login = () => {
 
@@ -28,7 +28,7 @@ const Login = () => {
     const router = useRouter()
 
     const message = useSelector( (state: State) => state?.user.data?.message )
-    const messageCreate = useSelector((state: State) => state?.user.messageCreate?.Message)
+    const messageCreate = useSelector((state: State) => state?.productos.messageCreate?.Message)
 
 
     const [option,setOption] = useState(true)

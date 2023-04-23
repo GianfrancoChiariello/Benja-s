@@ -1,9 +1,9 @@
 import Maquet from '../../components/Maquet'
-import Cards from '../../components/Cards'
-import LineGraph from '../../components/LineGraph'
-import BestItems from '../../components/BestItems'
-import BestPayments from '../../components/BestPayments'
-import TableVentas from '../../components/TableVentas'
+import Cards from './components/Cards'
+import LineGraph from './components/LineGraph'
+import BestItems from './components/BestItems'
+import BestPayments from './components/BestPayments'
+import TableVentas from './components/TableVentas'
 import {
     useState
 } from 'react'
