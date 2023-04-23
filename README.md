@@ -1,10 +1,9 @@
 Proyecto basico de Product dashboard.
 
 Notas:
-Se utiliza typescript sin interfaces
-Se utiliza redux thunk
-Custom hooks
-Recycle arquitec
+A los primeros pasos del proyecto se opto por hacer todo a nivel basico (arquitectura,manejo de interfaces etc..), a medidad que el proyecto crecia se empezo a implementar la metodologia "Clean arquitecture" para evitar que en un futuro sea un problema la "escalabilidad" y el uso de buenas practicas.
+
+Actualmente el proyecto maneja interceptors, interfaces, redux, recycles in axios etc
 
 -----------------------
 
