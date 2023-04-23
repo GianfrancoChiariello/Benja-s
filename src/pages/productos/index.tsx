@@ -38,6 +38,7 @@ const productos = () => {
     const productos = useSelector((state: State) => state?.productos.productos)
     const tipos = useSelector((state: State) => state?.productos.tipos)
 
+
     useEffect(() => {
 
         getProductos(marca,animal,etapa,empaque,peso).then((res) => {

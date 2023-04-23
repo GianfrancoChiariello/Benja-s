@@ -1,36 +1,18 @@
-const usersInitialState = {
-    userLogin: [],
-    productos: [],
-    tipos: [],
-    newproducto: [],
-    productoID: [],
-    messageUpdate: [],
-    data: [],
-    messageCreate: [],
-    messageDelete: "",
-    carrito: [],
-};
-const productosInitialState = {
-  productos: [],
-  newproducto: [],
-  productoID:[],
-  messageUpdate: [],
-  carrito: [],
-  tipos: [],
-  messageDelete: [],
-};
-const ventasInitialState = {
-  ventas:[],
-  top5: [],
-  top5pay: [],
-};
-  
-export const userReducer = (state = usersInitialState, action: any) => {
+//Estados iniciales
+import {
+  ventasInitialState,
+  productosInitialState,
+  usersInitialState
+} from './initialStates'
 
-    console.log(action.type)
-  
+
+//Adaptadores
+import { productsAdapter } from './adapters';
+
+
+//Reducers
+export const userReducer = (state = usersInitialState, action: any) => {
     switch (action.type) {
-      // Login //
       case 'LOGIN':
         return {
           ...state,
@@ -49,16 +31,12 @@ export const userReducer = (state = usersInitialState, action: any) => {
           data: action.payload
         }
       
-        // Default //
       default:
         return state;
     }
 };
 
 export const productsReducer = (state = productosInitialState, action: any) => {
-
-    console.log(action.type)
-
     switch (action.type) {
       case 'NEWPRODUCTO':
         return {
@@ -66,12 +44,13 @@ export const productsReducer = (state = productosInitialState, action: any) => {
           newproducto: action.payload
         }
 
-        case 'PRODUCTOS':
-            return {
-                ...state,
-                productos: action.payload,
-            };
-      case 'PRODUCTOID':
+      case 'PRODUCTOS':
+        return {
+            ...state,
+            productos: productsAdapter(action.payload),
+        };
+      
+        case 'PRODUCTOID':
         return {
           ...state,
           productoID: action.payload
@@ -104,8 +83,6 @@ export const productsReducer = (state = productosInitialState, action: any) => {
 };
   
 export const ventasReducer = (state = ventasInitialState, action: any) => {
-    console.log(action.type)
-
     switch (action.type) {
       case 'VENTAS':
         return {

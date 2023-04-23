@@ -1,6 +1,5 @@
 import axios, {AxiosRequestConfig} from 'axios'
 
-
 export const AxiosInterceptor = () => {
     const Header = (request: AxiosRequestConfig) => {
         const token = window?.localStorage.getItem("TOKEN")
