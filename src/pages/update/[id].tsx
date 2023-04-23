@@ -44,8 +44,8 @@ const actualizarProducto = () => {
     },[router])
 
 
-    const producto = useSelector((state: any) => state.productoID)
-    const message = useSelector((state: any) => state.messageUpdate)
+    const producto = useSelector((state: any) => state.productos.productoID)
+    const message = useSelector((state: any) => state.productos.messageUpdate)
         
     const [selector, setSelector] = useState("kgs")
 
@@ -58,62 +58,6 @@ const actualizarProducto = () => {
     const [marca, setMarca] = useState("")
     const [unidad,setUnidad] = useState("Disabled")
     const [precio,setPrecio] = useState("")
-
-/*     const handleSubmit = () => {
-
-        if ( empaque  && peso && marca  && precio && productos ){
-
-            let obj
-
-            if (selector === "kgs") {
-                obj = {
-                    "producto": {
-                        "nombre": producto?.producto?.nombre,
-                        "precio_kg": parseInt(precio),
-                        "total_kg":  parseInt(peso),
-                        "empaque": producto?.empaque
-                    },
-                    "marca": marca,
-                    "animal": producto?.animal,
-                    "etapa" : producto?.etapa,
-                    "empaque": producto?.empaque,
-                    "peso": parseInt(peso),
-                    "unidad": producto?.unidad
-                }
-            } else {
-                obj = {
-                    "producto": {
-                        "nombre": producto,
-                        "precio_unitario": parseInt(precio),
-                        "total_unitario":  parseInt(peso),
-                        "empaque": producto?.empaque
-                    },
-                    "marca": marca,
-                    "animal": producto?.animal,
-                    "etapa" : producto?.etapa,
-                    "empaque": producto?.empaque,
-                    "peso": parseInt(peso),
-                    "unidad": producto?.unidad
-                }
-            }
-
-            updateProduct(obj,id).then((res) => {
-                dispatch<any>(res).finally(() => {
-                    setAlertt(true)
-
-                    setTimeout(() => {
-                        setAlertt(false)
-                    }, 5000);
-
-            })
-                
-            })
-        } else {
-            alert('Ingresa todos los campos')
-        }
-
-    } */
-    
 
 
     useEffect(() => {
